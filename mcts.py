@@ -163,9 +163,8 @@ def simulacion_con_red(nodo):
     Retorna:
         int: Predicción de la red neuronal sobre la probabilidad de victoria para el jugador actual.
     """
-    resultado, tablero, turno = partida_simulada(nodo.turno, nodo.posicion)
-    tablero_vector = np.array(tablero).flatten()
-    turno_vector = np.array([turno])
+    tablero_vector = np.array(nodo.posicion.tablero).flatten()
+    turno_vector = np.array([nodo.turno])
     entrada_red = np.concatenate((tablero_vector, turno_vector))
     prediccion = red_otelo.predict(np.array([entrada_red]), verbose=0)[0][0]
 
